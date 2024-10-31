@@ -1,0 +1,47 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+const { frontmatter } = Astro.props;
+---
+
+<style>
+    .titleblog {
+        color: blueviolet;
+    }
+    .author {
+        color: green;
+    }
+
+    .list-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+
+        p {
+            display: inline-block;
+        }
+
+        a {
+            color: blue;
+        }
+    }
+</style>
+
+<BaseLayout pageTitle="Blogs de la página">
+    <h1 class="titleblog">{frontmatter.title}</h1>
+    <h3 class="author">Written by {frontmatter.author}</h3>
+    <p><em>{frontmatter.description}</em></p>
+    <p>Write by: {frontmatter.author}</p>
+    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+
+    <div class="list-tags">
+        {
+            frontmatter.tags.map((tag) => (
+                <p>
+                    <a href={`/tags/${tag}`}>{tag}</a>
+                </p>
+            ))
+        }
+    </div>
+
+    <slot />
+</BaseLayout>

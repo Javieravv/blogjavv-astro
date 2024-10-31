@@ -1,0 +1,38 @@
+---
+import BlogPostComponent from "../components/BlogPostComponent.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "Mi Blog";
+const allPosts = await Astro.glob("./posts/*.md");
+
+---
+
+<style>
+    .posts {
+        margin-top: 15px;
+        width: 98%;
+        display: flex;
+        /* flex-direction: column; */
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+</style>
+
+<BaseLayout pageTitle={pageTitle}>
+    <h1>Este es un Blog</h1>
+    <p>Contenido del Blog elaborado con el frameword <strong>Astro.</strong></p>
+    <!-- <li><a href="/posts/post-1">Primer Post</a></li>
+        <li><a href="/posts/post-2">Segundo Post</a></li>
+        <li><a href="/posts/post-3">Tercer Post</a></li> -->
+    <article class="posts">
+        {
+            allPosts.map((post) => (
+                // <div class="cardpost">
+                //     <a href={post.url}>{post.frontmatter.title}</a>
+                // </div>
+                <BlogPostComponent url={post.url} title={post.frontmatter.title}  />
+            ))
+        }
+    </article>
+</BaseLayout>

@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const pageTitle = "Acerca de Mí";
+const identity = {
+    firstName: "Javier Armando",
+    lastName: "Vargas Vega",
+    country: "Colombia",
+    ocupation: "Abogado e Ingeniero",
+    hobbies: ["Cocina", "ver Tv", "programar"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const happy = true;
+const finished = false;
+const goal = 4;
+
+const skillColor = "blue";
+const textTransform = "uppercase";
+---
+
+<style>
+    h2 {
+        color: blue;
+        font-size: 2rem;
+    }
+
+    .skill {
+        color: green;
+        font-weight: bold;
+        /* text-transform: uppercase; */
+        text-transform: var(--textTransform);
+    }
+</style>
+
+<BaseLayout  pageTitle={pageTitle}>
+    <h2>Acerda de este blog</h2>
+    <p>Aquí hay algo sobre mí:</p>
+    <ul>
+        <li>
+            Mi nombre es <strong
+                >{identity.firstName} {identity.lastName}</strong
+            >
+        </li>
+        <li>
+            Vivo en {identity.country} y trabajo como <strong
+                >{identity.ocupation}</strong
+            >
+        </li>
+        {
+            identity.hobbies.length >= 2 && (
+                <li>
+                    Dos de mis hobbies son: {identity.hobbies[0]} y{" "}
+                    {identity.hobbies[1]}
+                </li>
+            )
+        }
+    </ul>
+    <p>Mis habilidades son:</p>
+    <ul>
+        {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
+    {happy && <h3>Estoy feliz de aprender astro</h3>}
+    {finished && <p>He finalizado este tutorial</p>}
+    {
+        goal === 4 ? (
+            <p>Mi objetivo es finalizar en 4 días</p>
+        ) : (
+            <p>Mi objetivo tal vez sea acaba en más o menos de 4 días</p>
+        )
+    }
+</BaseLayout>

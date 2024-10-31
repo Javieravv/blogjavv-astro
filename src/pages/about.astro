@@ -13,7 +13,7 @@ const identity = {
 const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
 
 const happy = true;
-const finished = false;
+const finished = true;
 const goal = 4;
 
 // const skillColor = "blue";
@@ -63,8 +63,9 @@ const goal = 4;
     </ul>
     {happy && <h3>Estoy feliz de aprender astro</h3>}
     {finished && <p>He finalizado este tutorial</p>}
+
     {
-        goal === 4 ? (
+        (!finished && goal === 4) ? (
             <p>Mi objetivo es finalizar en 4 días</p>
         ) : (
             <p>Mi objetivo tal vez sea acaba en más o menos de 4 días</p>

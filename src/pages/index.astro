@@ -1,11 +1,13 @@
 ---
+import Greeting from "../components/Greeting";
 import BaseLayout from "../layouts/BaseLayout.astro";
 const pageTitle = "Blog Javv";
 ---
 
 <main>
     <BaseLayout pageTitle={pageTitle}>
-        <h1>Astro</h1>
-        <p>Primera aplicación con Astro.</p>
+        <h1>Blgo creado con Astro</h1>
+        <Greeting client:load messages={['Hi', 'Hola', 'Cómo estás?', 'Qué ha habido?','Quiubo!','Ole mano!!']} />
+
     </BaseLayout>
 </main>
